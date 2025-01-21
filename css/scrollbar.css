@@ -1,7 +1,7 @@
 
 .actns-scrollbar::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px var(--actns-secondary-color);
+	-webkit-box-shadow: inset 0 0 6px var(--actns-btn-color);
 	border-radius: 10px;
 	background-color: #F5F5F5;
 }
@@ -9,12 +9,12 @@
 .actns-scrollbar::-webkit-scrollbar
 {
 	width: 8px;
-	background-color: #F5F5F5;
+	background-color: #000000;
 }
 
 .actns-scrollbar::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: var(--actns-secondary-color);
+	background-color: var(--actns-thirty-color);
 }

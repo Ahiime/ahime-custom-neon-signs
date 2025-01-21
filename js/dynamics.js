@@ -28,6 +28,7 @@
             let text = $(this).val();
             let formattedText = text.split("").map(letter => `<span>${letter}</span>`).join(""); 
             $(".actns-animated-multicolor").html(formattedText);
+            adjustFontSize()
         });
     })
 })(jQuery)

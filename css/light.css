@@ -3,25 +3,25 @@
     background: linear-gradient(to right, #00ff00, #00ff00);
     -webkit-background-clip: text;
     text-shadow: 
-    0 0 5px #00ff00, 
     0 0 10px #00ff00, 
-    0 0 20px #00ff00;
+    0 0 20px #00ff00, 
+    0 0 30px #00ff00;
     
 }
 
 .external-glow {
     color: #ffffff;
     text-shadow: 
-        0 0 5px #00ff00, 
-        0 0 10px #00ff00, 
-        0 0 20px #00ff00;
+    0 0 10px #00ff00, 
+    0 0 20px #00ff00, 
+    0 0 30px #00ff00;
 }
 
 .actns-animated-multicolor span {
     display: inline-block;
     animation: colorChange 2s infinite alternate;
     color: #fff;
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
 }
 
 @keyframes colorChange {
