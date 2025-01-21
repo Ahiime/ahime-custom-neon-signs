@@ -272,35 +272,6 @@ body {
 
 /*Scroll bar */
 
-@media screen and (max-width: 767px) {
-  .actns-left-section-bg {
-    height: 50vh;
-  }
-
-  .actns-container {
-    height: auto;
-  }
-
-  .actns-container {
-    flex-wrap: wrap;
-  }
-
-  .actns-left-section {
-    flex-basis: 100%;
-    height: 100%;
-    max-width: 100%;
-  }
-
-  .actns-right-section {
-    flex-basis: 100%;
-    height: max-content;
-  }
-
-  .actns-left-section {
-    height: 350px;
-  }
-}
-
 .actns-container textarea,
 .actns-container input {
   border: 2px solid var(--actns-secondary-color);
@@ -356,4 +327,10 @@ body {
 .actns-field-colors-container label:hover {
     box-shadow: 0 0 30px 10px currentColor !important;
     background-color: currentColor !important;
+}
+
+.actns-right-section-footer .actns-designer-price {
+  margin: .5em;
+  margin-left: auto;
+  text-align: left;
 }
