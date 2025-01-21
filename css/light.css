@@ -1,0 +1,33 @@
+.internal-glow {
+    color: transparent;
+    background: linear-gradient(to right, #00ff00, #00ff00);
+    -webkit-background-clip: text;
+    text-shadow: 
+    0 0 5px #00ff00, 
+    0 0 10px #00ff00, 
+    0 0 20px #00ff00;
+    
+}
+
+.external-glow {
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px #00ff00, 
+        0 0 10px #00ff00, 
+        0 0 20px #00ff00;
+}
+
+.actns-animated-multicolor span {
+    display: inline-block;
+    animation: colorChange 2s infinite alternate;
+    color: #fff;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+@keyframes colorChange {
+    0% { color: #ff00ff; }
+    25% { color: #00ffff; }
+    50% { color: #00ff00; }
+    75% { color: #ffff00; }
+    100% { color: #ff0000; }
+}

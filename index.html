@@ -1,28 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Neon Signs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+NZ:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="stylesheet" href="css/light.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="actns-container">
-        <section class="actns-left-section">
+    <div class="actns-container" id="actns-container">
+        <section class="actns-left-section" id="actns-left-section">
             <!-- Background Section -->
             <div class="actns-left-section-bg">
                 <!-- Logo and header panel section -->
                 <div class="actns-left-section-logo">
+                    <a target="_blank" href="https://ahime.net" class="actns-logo-container">
+                        <img alt="Made by Ahime" title="Made by Ahime" src="assets/made-by-ahime.png" height="55px"
+                            alt="Made by Ahime" srcset="">
+                    </a>
                     <!-- Backboard (Neon Form) section -->
-                     <div class="actns-left-section-backboard">
+                    <div class="actns-left-section-backboard">
                         <!-- Neon Text Preview Section -->
-                         <div class="actns-left-section-preview"></div>
-                     </div>
+                        <div class="actns-left-section-preview">
+                            <p class="actns-animated-multicolor">
+                                <span>A</span><span>h</span><span>i</span><span>m</span><span>e</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <section class="actns-right-section"></section>
+        <section class="actns-right-section" id="actns-right-section">
+            <!-- Right section header -->
+            <div class="actns-right-section-header">
+                <h1>Customise Neon</h1>
+                <h2>50$</h2>
+            </div>
+
+            <div class="actns-field-text-editor">
+                <h2>Type Your Text</h2>
+                <textarea rows="4" name="request-text" id="actns-text-editor">Type Your Text</textarea>
+            </div>
+
+            <hr>
+
+            <!-- Font sections  -->
+            <div class="actns-field-fonts">
+                <h2>Pick Your Font</h2>
+                <div class="actns-field-fonts-container actns-scrollbar">
+                    <div>
+                        <input type="radio" name="request-font" value="Arial" id="actns-font-arial">
+                        <label for="actns-font-arial">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial1" id="actns-font-arial1">
+                        <label for="actns-font-arial1">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial2" id="actns-font-arial2">
+                        <label for="actns-font-arial2">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial3" id="actns-font-arial3">
+                        <label for="actns-font-arial3">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="request-font" value="Arial4" id="actns-font-arial4">
+                        <label for="actns-font-arial4">Arial</label>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Colors sections -->
+            <div class="actns-field-colors">
+                <h2>Select Your Color</h2>
+                <div class="actns-field-colors-container actns-init-default-color">
+                    <div>
+                        <input type="radio" name="request-color" value="Blue" id="actns-colors-blue">
+                        <label for="actns-colors-blue"></label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-color" value="yellow" id="actns-colors-yellow">
+                        <label for="actns-colors-yellow"></label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-color" value="red" id="actns-colors-red">
+                        <label for="actns-colors-red"></label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-color" value="green" id="actns-colors-green">
+                        <label for="actns-colors-green"></label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-color" value="dark" id="actns-colors-dark">
+                        <label for="actns-colors-dark"></label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-color" value="gray" id="actns-colors-gray">
+                        <label for="actns-colors-gray"></label>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Sizes sections -->
+            <div class="actns-field-sizes">
+                <h2>Pick your size</h2>
+                <div class="actns-field-sizes-container">
+                    <div>
+                        <input type="radio" name="request-sizes" value="M" id="actns-size-m">
+                        <label for="actns-size-m">M</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-sizes" value="L" id="actns-size-l">
+                        <label for="actns-size-l">L</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-sizes" value="XL" id="actns-size-xl">
+                        <label for="actns-size-xl">XL</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-sizes" value="XXL" id="actns-size-xxl">
+                        <label for="actns-size-xxl">XXL</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-sizes" value="AL" id="actns-size-al">
+                        <label for="actns-size-al">AL</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="request-sizes" value="EM" id="actns-size-em">
+                        <label for="actns-size-em">EM</label>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            
+            <div class="actns-right-section-options">
+                <div class="actns-options-group">
+                    <h2>Custom options group</h2>
+                    <div class="actns-options-group-field">
+                        <div>
+                            <input type="radio" name="actns-custom-option" id="actns-custom-options-1">
+                            <label class="actns-custom-options" for="actns-custom-options-1">
+                                <div class="actns-custom-options-content">
+                                    <div class="actns-custom-options-content-title">Watterproof IP67</div>
+                                    <div class="actns-custom-options-content-price"> $3000 </div>
+                                </div>
+                                <span class="actns-custom-options-modal">i</span>
+                            </label>
+                        </div>
+        
+                        <div>
+                            <input type="radio" name="actns-custom-option" id="actns-custom-options-2">
+                            <label class="actns-custom-options" for="actns-custom-options-2">
+                                <div class="actns-custom-options-content">
+                                    <div class="actns-custom-options-content-title">Watterproof IP67</div>
+                                    <div class="actns-custom-options-content-price"> $3000 </div>
+                                </div>
+                                <span class="actns-custom-options-modal">i</span>
+                            </label>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="actns-right-section-footer">
+                <div class="actns-add-to-cart-button-section">
+                    <button class="actns-add-to-cart-button">Add to cart</button>
+                </div>
+                <div>
+                    <p>Have your own logo or design? <a href="#">Click Here</a></p>
+                </div>
+            </div>
+        </section>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/followScroll.js"></script>
     <script src="js/dynamics.js"></script>
 </body>
+
 </html>
