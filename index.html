@@ -15,6 +15,11 @@
 </head>
 
 <body>
+    <div class="actns-modal-container"> <!-- actns-modal-show -->
+        <div class="actns-modal-container-inner"></div>
+        <div class="actns-modal-container-content">
+        </div>
+    </div>
     <div class="actns-container" id="actns-container">
         <section class="actns-left-section" id="actns-left-section">
             <!-- Background Section -->
@@ -22,16 +27,22 @@
                 <!-- Logo and header panel section -->
                 <div class="actns-left-section-logo">
                     <a target="_blank" href="https://ahime.net" class="actns-logo-container">
-                        <img alt="Made by Ahime" title="Made by Ahime" src="assets/made-by-ahime.png" height="55px"
+                        <img alt="Made by Ahime" title="Made by Ahime" src="assets/made-by-ahime.png" height="45px"
                             alt="Made by Ahime" srcset="">
                     </a>
+                    <ul class="actns-toolbar-panel">
+                        <li id="actns-2d-preview-selector" class="actns-hide"><div class="actns-trigger-btn-toolbar">2D</div></li>
+                        <li id="actns-3d-preview-selector"><img src="/assets/icons8-360-view-50.png" alt="360-view--v3"></li>
+                    </ul>
+                    <h2 class="actns-disigner-price">$50</h2>
                     <!-- Backboard (Neon Form) section -->
                     <div class="actns-left-section-backboard">
                         <!-- Neon Text Preview Section -->
                         <div class="actns-left-section-preview">
-                            <p class="actns-animated-multicolor">
+                            <p class="actns-animated-multicolor actns-2d-preview actns-preview-active">
                                 <span>A</span><span>h</span><span>i</span><span>m</span><span>e</span>
                             </p>
+                            <div class="actns-3d-preview"></div>
                         </div>
                     </div>
                 </div>
@@ -203,8 +214,11 @@
             </div>
         </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/three-custom.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/followScroll.js"></script>
+    <script src="js/actns-neon.js"></script>
     <script src="js/dynamics.js"></script>
 </body>
 

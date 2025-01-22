@@ -24,10 +24,20 @@ body {
   white-space: nowrap;
 }
 
+.actns-3d-preview,
+.actns-2d-preview,
+.actns-animated-multicolor {
+  display: none;
+}
+
+.actns-preview-active {
+  display: block;
+}
+
 .actns-container hr {
   margin: 2em 0;
   border-color: #919191;
-  opacity: .8;
+  opacity: 0.8;
   box-shadow: 0 0 15px 2px var(--actns-secondary-color);
 }
 
@@ -43,7 +53,7 @@ body {
 }
 
 .actns-container a {
-  color: var(--actns-primary-color);
+  color: var(--actns-secondary-color);
 }
 
 .actns-container a:active,
@@ -94,8 +104,27 @@ body {
 .actns-logo-container {
   position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0;
   padding: 0 0.5em;
+}
+
+.actns-toolbar-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  list-style: none;
+  display: inline-flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 .5em;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.actns-toolbar-panel li {
+  cursor: pointer;
 }
 
 .actns-left-section-preview {
@@ -173,8 +202,8 @@ body {
 }
 
 .actns-field-colors-container input:checked ~ label {
-  color: var(--actns-primary-color);
-  border: 2.5px solid var(--actns-primary-color);
+  box-shadow: 0 0 30px 10px currentColor !important;
+  background-color: currentColor !important;
 }
 
 .actns-field-sizes-container {
@@ -251,9 +280,9 @@ body {
 }
 
 .actns-right-section-options input:hover ~ label .actns-custom-options-modal {
-    color: var(--actns-primary-color);
-    border: 1px solid var(--actns-primary-color);
-  }
+  color: var(--actns-primary-color);
+  border: 1px solid var(--actns-primary-color);
+}
 
 .actns-custom-options-content-price {
   font-size: 25px;
@@ -301,12 +330,11 @@ body {
 
 .actns-container button:hover,
 .actns-field-sizes-sub-container label:hover,
-.actns-options-group-field label:hover{
+.actns-options-group-field label:hover {
   box-shadow: 0 0 30px 10px var(--actns-secondary-color);
   background-color: var(--actns-secondary-color);
   color: var(--actns-primary-color);
 }
-
 
 .actns-field-sizes-container label {
   display: flex;
@@ -325,12 +353,74 @@ body {
 }
 
 .actns-field-colors-container label:hover {
-    box-shadow: 0 0 30px 10px currentColor !important;
-    background-color: currentColor !important;
+  box-shadow: 0 0 30px 10px currentColor !important;
+  background-color: currentColor !important;
 }
 
 .actns-right-section-footer .actns-designer-price {
-  margin: .5em;
+  margin: 0.5em;
   margin-left: auto;
   text-align: left;
+}
+
+.actns-size-price {
+  font-weight: 700;
+}
+
+.actns-disigner-price {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700 !important;
+  font-size: 30px !important;
+  margin: 0.2em;
+}
+
+.actns-modal-container {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0; 
+  z-index: 99;
+}
+
+.actns-modal-container-inner {
+  background-color: #000;
+  opacity: 0.7;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.actns-modal-container-content {
+  position: absolute;
+  left: 12.5%;
+  top: 12.5%;
+  width: 75%;
+  height: 75%;
+  background-color: #ffffff;
+}
+
+.actns-modal-show {
+  display: block;
+}
+
+.actns-modal-container-content .sketchfab-embed-wrapper, .actns-modal-container-content .sketchfab-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.actns-3d-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.actns-hide {
+  display: none;
+}
+
+.actns-trigger-btn-toolbar {
+  padding: .5em;
 }
