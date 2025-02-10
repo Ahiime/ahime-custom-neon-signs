@@ -152,7 +152,7 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   overflow: auto;
-  height: 150px;
+  max-height: 150px;
 }
 
 .actns-field-fonts-container input,
@@ -423,4 +423,8 @@ body {
 
 .actns-trigger-btn-toolbar {
   padding: .5em;
+}
+
+canvas {
+  background: transparent !important; /* Forcer la transparence */
 }
