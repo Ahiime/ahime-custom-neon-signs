@@ -428,3 +428,102 @@ body {
 canvas {
   background: transparent !important; /* Forcer la transparence */
 }
+
+#actns-ruler {
+  position: absolute;
+  z-index: 1;
+}
+
+.actns-animated-multicolor {
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.actns-ruler-left {
+  display: block;
+  height: 85%;
+  width: 3px;
+  background-color: #fff;
+  margin-top: auto;
+  left: 0;
+  position: absolute;
+  top: calc(15%/2);
+}
+
+.actns-ruler-left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 2px;
+  left: -3px;
+  background-color: #fff;
+}
+
+.actns-ruler-left::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 2px;
+  left: -3px;
+  background-color: #fff;
+}
+
+.actns-ruler-bottom {
+  display: block;
+  width: 85%;
+  height: 3px;
+  background-color: #fff;
+  left: calc(15%/2);
+  bottom: 0;
+  position: absolute;
+}
+
+.actns-ruler-bottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 2px;
+  height: 10px;
+  background-color: #fff;
+}
+
+.actns-ruler-bottom::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  right: 0px;
+  top: -3px;
+  background-color: #fff;
+}
+
+.actns-ruler-left-content,
+.actns-ruler-bottom-content {
+  position: absolute;
+  font-size: 11px;
+}
+
+.actns-ruler-left-content {
+  top: calc(50% - 15px);
+  left: -55px;
+}
+
+.actns-ruler-bottom-content {
+  left: calc(50% - 15px);
+  bottom: -30px;
+}
+
+.actns-animated-multicolor {
+  max-width: 80%;
+}
+
+#actns-neon-text {
+  position: absolute;
+  top: -15000px;
+  left: -15000px;
+  visibility: hidden;
+}

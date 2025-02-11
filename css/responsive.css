@@ -46,4 +46,13 @@
       margin-left: auto;
       text-align: center;
     }
+
+    .actns-animated-multicolor {
+      max-width: 75%;
+    }
+
+    .actns-ruler-left-content {
+      top: calc(50% - 15px);
+      left: -50px;
+    }
   }
