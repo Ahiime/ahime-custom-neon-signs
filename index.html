@@ -137,7 +137,28 @@
                 <h2>Pick your size</h2>
                 <div class="actns-field-sizes-container">
                     <div class="actns-field-sizes-sub-container">
-                        <input type="radio" name="request-sizes" value="M" id="actns-size-m">
+                        <input type="radio" name="request-sizes" value="XXS" id="actns-size-xxs" checked>
+                        <label for="actns-size-xxs">
+                            <span class="actns-size-title">XXS</span>
+                            <span class="actns-size-price">$500</span>
+                        </label>
+                    </div>
+                    <div class="actns-field-sizes-sub-container">
+                        <input type="radio" name="request-sizes" value="XS" id="actns-size-xs">
+                        <label for="actns-size-xs">
+                            <span class="actns-size-title">XS</span>
+                            <span class="actns-size-price">$500</span>
+                        </label>
+                    </div>
+                    <div class="actns-field-sizes-sub-container">
+                        <input type="radio" name="request-sizes" value="S" id="actns-size-s" checked>
+                        <label for="actns-size-s">
+                            <span class="actns-size-title">S</span>
+                            <span class="actns-size-price">$500</span>
+                        </label>
+                    </div>
+                    <div class="actns-field-sizes-sub-container">
+                        <input type="radio" name="request-sizes" value="M" id="actns-size-m" checked>
                         <label for="actns-size-m">
                             <span class="actns-size-title">M</span>
                             <span class="actns-size-price">$500</span>
@@ -161,20 +182,6 @@
                         <input type="radio" name="request-sizes" value="XXL" id="actns-size-xxl">
                         <label for="actns-size-xxl">
                             <span class="actns-size-title">XXL</span>
-                            <span class="actns-size-price">$500</span>
-                        </label>
-                    </div>
-                    <div class="actns-field-sizes-sub-container">
-                        <input type="radio" name="request-sizes" value="AL" id="actns-size-al">
-                        <label for="actns-size-al">
-                            <span class="actns-size-title">AL</span>
-                            <span class="actns-size-price">$500</span>
-                        </label>
-                    </div>
-                    <div class="actns-field-sizes-sub-container">
-                        <input type="radio" name="request-sizes" value="EM" id="actns-size-em">
-                        <label for="actns-size-em">
-                            <span class="actns-size-title">EM</span>
                             <span class="actns-size-price">$500</span>
                         </label>
                     </div>
@@ -223,11 +230,14 @@
             </div>
         </section>
     </div>
+    <script src="js/openType.js"></script>
+    <script src="js/fontToJson.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="js/three-custom.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/followScroll.js"></script>
     <script src="js/actns-neon.js"></script>
+    <script src="js/mesure.js"></script>
     <script src="js/dynamics.js"></script>
 </body>
 

@@ -1,5 +1,7 @@
 (function ($) {
     $(document).ready(function () {
+        const cmMult = 37.7952755906;
+
         if ($(window).width() > 767) {
             $('#actns-left-section').scrollFollow({
                 container: 'actns-container'
@@ -42,7 +44,7 @@
         
         
 
-        let color = "#fff", lightColor = "#fff", actualText = "Ahime", actualType = 1, actualIntensity = 3;
+        let color = "yellow", lightColor = "yellow", actualText = "Ahime", actualType = 1, actualIntensity = 1;
         let actns_neon;
 
         $("#actns-2d-preview-selector").on("click", function () {
@@ -52,6 +54,8 @@
             
             $("#actns-2d-preview-selector").addClass("actns-hide");
             $("#actns-3d-preview-selector").removeClass("actns-hide");
+            $("#actns-ruler").removeClass("actns-3d-mode");
+            $("#actns-ruler").removeClass("actns-hide");
         })
 
         $("#actns-3d-preview-selector").on("click", function () {
@@ -64,42 +68,46 @@
 
             $("#actns-3d-preview-selector").addClass("actns-hide");
             $("#actns-2d-preview-selector").removeClass("actns-hide");
+            $("#actns-ruler").addClass("actns-hide");
+            $("#actns-ruler").addClass("actns-3d-mode");
         })
 
        
 
-        function displayNeonText(text, type) {
+        async function displayNeonText(text, type) {
             actualText = text;
             actualType = type;
             actns_neon.removeAllObjects();
 
+            let font = await actnsConvertFontToJSON('http://127.0.0.1:5501/assets/font/Flynn.ttf')
+
             switch (parseInt(type)) {
                 case 1:
-                    actns_neon.addNeonTextFormOne(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormOne(text, color, lightColor, actualIntensity, font, true);
                     break;
 
                 case 2:
-                    actns_neon.addNeonTextFormTwo(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormTwo(text, color, lightColor, actualIntensity, font);
                     break;
 
                 case 3:
-                    actns_neon.addNeonTextFormThree(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormThree(text, color, lightColor, actualIntensity, font);
                     break;
 
                 case 4:
-                    actns_neon.addNeonTextFormFour(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormFour(text, color, lightColor, actualIntensity, font);
                     break;
 
                 case 5:
-                    actns_neon.addNeonTextFormFive(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormFive(text, color, lightColor, actualIntensity, font);
                     break;
 
                 case 6:
-                    actns_neon.addNeonTextFormSix(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormSix(text, color, lightColor, actualIntensity, font);
                     break;
 
                 default:
-                    actns_neon.addNeonTextFormOne(text, color, lightColor, actualIntensity);
+                    actns_neon.addNeonTextFormOne(text, color, lightColor, actualIntensity, font, true);
                     break;
             }
         }
@@ -114,7 +122,7 @@
             $("#actns-ruler").css("left", element.position().left - (margin / 2)); // Utilisation de .position()
             $("#actns-ruler").css("top", element.position().top - (margin / 2));
 
-            $("#actns-ruler").removeClass("actns-hide");
+            if(!$("#actns-ruler").hasClass('actns-3d-mode')) $("#actns-ruler").removeClass("actns-hide");
         }
 
         $(document).on("mouseover click", function () {
@@ -123,7 +131,6 @@
         });
 
 
-        // 1. Définir la taille de la police en fonction de la dimension (S, M, L, ...)
         function getFontSizeByDimension(dimension) {
 
             dimension = dimension.toUpperCase();
@@ -139,84 +146,76 @@
             }
 
             switch (dimension) { // Convertir en majuscules pour éviter les erreurs de casse
+                case 'XXS':
+                    return 226.7716535436; // Très petit
                 case 'XS':
-                    return '12px'; // Très petit
+                    return 264.5669291342; // Très petit
                 case 'S':
-                    return '24px'; // Petit
+                    return 302.3622047248; // Petit
                 case 'M':
-                    return '36px'; // Moyen
+                    return 377.952755906; // Moyen
                 case 'L':
-                    return '48px'; // Grand
+                    return 453.5433070872; // Grand
                 case 'XL':
-                    return '60px'; // Très grand
+                    return 529.1338582684; // Très grand
                 case 'XXL':
-                    return '72px'; // Extra grand
+                    return 604.7244094496; // Extra grand
                 case 'XXXL':
-                    return '96px'; // Très extra grand
+                    return 755.905511812; // Très extra grand
                 default:
-                    return '24px'; // Par défaut (taille S)
+                    return 302.3622047248; // Par défaut (taille S)
             }
         }
 
-        // 2. Appliquer la police et la taille du texte à l'élément
-        function setTextStyle(element, fontFamily, fontSize) {
-            element.style.fontFamily = fontFamily;
-            element.style.fontSize = fontSize;
+       
+        function getScaleFactor(dimension, reference = 'M') {
+            const scaleFactors = {
+                'XXS': 0.6,
+                'XS': 0.7,
+                'S': 0.8,
+                'M': 1,
+                'L': 1.2,
+                'XL': 1.4,
+                'XXL': 1.6,
+                'XXXL': 2
+            };
+        
+            // Vérifier si la dimension existe
+            if (!scaleFactors[dimension] || !scaleFactors[reference]) {
+                throw new Error(`Dimension inconnue : ${dimension} ou référence invalide : ${reference}`);
+            }
+        
+            // Calcul du facteur par rapport à la référence choisie
+            return scaleFactors[dimension] / scaleFactors[reference];
         }
 
-        // 3. Mesurer les dimensions visuelles du texte
-        function getTextDimensions(text, fontFamily, fontSize) {
-            const element = document.getElementById('actns-neon-text');
-            element.textContent = text;
-            setTextStyle(element, fontFamily, fontSize);
-
-            const width = element.offsetWidth;  // Largeur en pixels
-            const height = element.offsetHeight; // Hauteur en pixels
-
-            return { width, height };
-        }
-
-        // 4. Calculer les dimensions finales du néon
-        function calculateNeonDimensions(text, dimension, fontFamily, tubeThickness, letterSpacing, safetyMargin) {
-            // Obtenir la taille de la police en fonction de la dimension
-            const fontSize = getFontSizeByDimension(dimension);
-
-            // Mesurer les dimensions visuelles du texte
-            const dimensions = getTextDimensions(text, fontFamily, fontSize);
-
-            // Convertir les pixels en millimètres (1 pixel = 0.264583 mm)
-            const pixelsToMillimeters = 0.264583;
-            const widthInMillimeters = dimensions.width * pixelsToMillimeters;
-            const heightInMillimeters = dimensions.height * pixelsToMillimeters;
-
-            // Ajuster pour l'épaisseur du tube
-            const adjustedWidth = widthInMillimeters + tubeThickness;
-            const adjustedHeight = heightInMillimeters + tubeThickness;
-
-            // Ajuster pour l'espacement entre les lettres
-            const totalLetterSpacing = (text.length - 1) * letterSpacing;
-            const adjustedWidthWithSpacing = adjustedWidth + totalLetterSpacing;
-
-            // Ajouter la marge de sécurité
-            const finalWidth = adjustedWidthWithSpacing + safetyMargin;
-            const finalHeight = adjustedHeight + safetyMargin;
-
-            return { width: finalWidth, height: finalHeight };
-        }
-
-        function display_size() {
+        async function display_size() {
             const text = $("#actns-text-editor").val(); // Texte du néon
             const dimension = $("input[name='request-sizes']:checked").val(); // Dimension (S, M, L)
-            const fontFamily = "Arial"; // Police d'écriture
-            const tubeThickness = 10; // Épaisseur du tube en mm
-            const letterSpacing = 5; // Espacement entre les lettres en mm
-            const safetyMargin = 20; // Marge de sécurité en mm
+            const tubeThickness = 1 * cmMult; // Épaisseur du tube en mm
+            const letterSpacing = 0 * cmMult; // Espacement entre les lettres en mm
+            const safetyMargin = 2 * cmMult; // Marge de sécurité en mm
 
             // Calculer les dimensions finales
-            const dimensions = calculateNeonDimensions(text, dimension, fontFamily, tubeThickness, letterSpacing, safetyMargin);
+            // const dimensions = calculateNeonDimensions(text, dimension, fontFamily, tubeThickness, letterSpacing, safetyMargin);
 
-            $(".actns-ruler-left-content").text(dimensions.height.toFixed(2) + 'mm');
-            $(".actns-ruler-bottom-content").text(dimensions.width.toFixed(2) + 'mm');
+            const dimensions = await actnsMeasureText(
+                text, 
+                getFontSizeByDimension(dimension), 
+                {
+                    tubeThickness: tubeThickness,
+                    charSpacing: letterSpacing, 
+                    scaleFactor: 1, // getScaleFactor(dimension),
+                    margin: safetyMargin,
+                    fontPath: '../assets/font/Flynn.ttf'
+                }
+            );
+            
+            let ropeCm =  dimensions.ropeLength / cmMult;
+            let width = dimensions.width / cmMult; 
+            let height = dimensions.height / cmMult; 
+            $(".actns-ruler-left-content").text(height.toFixed(2) + 'cm');
+            $(".actns-ruler-bottom-content").text(width.toFixed(2) + 'cm');
         }
     })
 })(jQuery)

@@ -46,7 +46,7 @@ var ACTNS_NEON = (function () {
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         scene = new THREE.Scene();
         // scene.background = new THREE.Color("#010e1c"); // #010e1c
-        camera = new THREE.PerspectiveCamera(75, canvasSelector.offsetWidth / canvasSelector.offsetHeight, 0.1, 10000);
+        camera = new THREE.PerspectiveCamera(75, canvasSelector.offsetWidth / canvasSelector.offsetHeight, 0.1, 1000);
         renderer.setSize(canvasSelector.offsetWidth, canvasSelector.offsetHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setClearColor(0xFEFEFE, 0);
@@ -132,16 +132,7 @@ var ACTNS_NEON = (function () {
     ACTNS_NEON.prototype.addLight = function () {
         var light = new THREE.AmbientLight(0xffffff, .05);
         scene.add(light);
-        // Créez une lumière de contre-jour
-        var contreJour = new THREE.DirectionalLight(0xffffff, .1);
-        contreJour.position.set(-1, .2, -1); // Vers l'arrière de la scène
-        scene.add(contreJour);
-
-        // Créez une lumière de jour
-        var jour = new THREE.DirectionalLight(0xffffff, .1);
-        jour.position.set(1, .2, 1); // Vers l'avant de la scène
-        scene.add(jour);
-
+      
 
         this.render();
     }
@@ -152,63 +143,64 @@ var ACTNS_NEON = (function () {
         lightColor = "#eeefff",
         intensity = 2.5,
         fontPath = '',
+        animate =  false,
         position = { x: 0, y: 0, z: 0 }
     ) {
         const defaultFontPath = '../assets/font/Sweet Charlie_Regular.json',
             loader = new FontLoader(),
             that = this;
-    
+
         if (fontPath === '') fontPath = defaultFontPath;
-    
-        loader.load(fontPath, function (font) {
-    
-            var textGeometry = new TextGeometry(text, {
-                font: font,
-                size: .65,
-                height: .05,
-                curveSegments: 20,
-                bevelSize: .0005,
-                bevelOffset: .001,
-                bevelThickness: .005,
-                bevelEnabled: true
-            });
-    
-            const textMaterial = new THREE.MeshStandardMaterial({
-                color: new THREE.Color(color),
-                metalness: 1,
-                roughness: 0.5,
-                emissiveIntensity: 0, // Commence avec une lumière éteinte
-                emissive: new THREE.Color(lightColor)
-            });
-    
-            const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-            scene.add(textMesh);
-            currentObj.push(textMesh);
-            textMesh.position.set(position.x, position.y, position.z);
-    
-            adaptOnView(textMesh);
-            that.render();
-    
+
+        let font = new FontLoader().parse(fontPath)
+
+        var textGeometry = new TextGeometry(text, {
+            font: font,
+            size: 1,
+            height: .01,
+            curveSegments: 25,
+            bevelSize: .0005,
+            bevelOffset: .001,
+            bevelThickness: .005,
+            bevelEnabled: true
+        });
+
+        const textMaterial = new THREE.MeshStandardMaterial({
+            color: new THREE.Color(color),
+            metalness: 1,
+            roughness: 0.5,
+            emissiveIntensity: animate ? 0 : 1, // Commence avec une lumière éteinte si l'animation est activé
+            emissive: new THREE.Color(lightColor)
+        });
+
+        const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+        scene.add(textMesh);
+        currentObj.push(textMesh);
+        textMesh.position.set(position.x, position.y, position.z);
+
+        adaptOnView(textMesh);
+        that.render();
+
+        if(animate) {
             // Animation de la lumière en boucle
             that.animateNeonEffect(textMesh.material, intensity);
 
             that.render(true);
-
-        });
+        }
     };
 
-    ACTNS_NEON.prototype.animateNeonEffect = function(material, intensity) {
+    ACTNS_NEON.prototype.animateNeonEffect = function (material, intensity) {
         gsap.to(material, {
-            emissiveIntensity: intensity, 
+            emissiveIntensity: intensity,
             duration: 1.5,
             repeat: -1,
-            yoyo: true, 
+            yoyo: true,
             ease: "elastic.out",
             stagger: .2,
         });
     }
 
-    ACTNS_NEON.prototype.addNeonTextFormTwo = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 4, fontPath = '', boardColor = 'red', position = {x: 0, y: 0, z: 0}) {
+    ACTNS_NEON.prototype.addNeonTextFormTwo = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 4, fontPath = '', boardColor = 'red', position = { x: 0, y: 0, z: 0 }) {
         const defaultFontPath = '../assets/font/Sweet Charlie_Regular.json',
             loader = new FontLoader(),
             that = this;
@@ -316,7 +308,7 @@ var ACTNS_NEON = (function () {
         })
     }
 
-    ACTNS_NEON.prototype.addNeonTextFormThree = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 3, fontPath = '', boardColor = "red", position = {x: 0, y: 0, z: 0}) {
+    ACTNS_NEON.prototype.addNeonTextFormThree = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 3, fontPath = '', boardColor = "red", position = { x: 0, y: 0, z: 0 }) {
         const defaultFontPath = '../assets/font/Sweet Charlie_Regular.json',
             loader = new FontLoader(),
             that = this;
@@ -389,7 +381,7 @@ var ACTNS_NEON = (function () {
         })
     }
 
-    ACTNS_NEON.prototype.addNeonTextFormFour = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 5, fontPath = '', boardColor = "red", position = {x: 0, y: 0, z: 0}) {
+    ACTNS_NEON.prototype.addNeonTextFormFour = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 5, fontPath = '', boardColor = "red", position = { x: 0, y: 0, z: 0 }) {
         const defaultFontPath = '../assets/font/Sweet Charlie_Regular.json',
             loader = new FontLoader(),
             that = this;
@@ -457,7 +449,7 @@ var ACTNS_NEON = (function () {
 
             const boxGroup = new THREE.Group();
 
-        
+
             boxGroup.add(
                 middlePanelMesh,
                 backPanelMesh
@@ -475,7 +467,7 @@ var ACTNS_NEON = (function () {
         })
     }
 
-    ACTNS_NEON.prototype.addNeonTextFormFive = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 2.5, fontPath = '', boardColor = "red", position = {x: 0, y: 0, z: 0}) {
+    ACTNS_NEON.prototype.addNeonTextFormFive = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 2.5, fontPath = '', boardColor = "red", position = { x: 0, y: 0, z: 0 }) {
         const defaultFontPath = '../assets/font/Sweet Charlie_Regular.json',
             loader = new FontLoader(),
             that = this;
@@ -539,7 +531,7 @@ var ACTNS_NEON = (function () {
 
             const boxGroup = new THREE.Group();
 
-        
+
             boxGroup.add(
                 middlePanelMesh,
                 backPanelMesh
@@ -557,7 +549,7 @@ var ACTNS_NEON = (function () {
         })
     }
 
-    ACTNS_NEON.prototype.addNeonTextFormSix = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 5, fontPath = '', boardColor = "red", position = {x: 0, y: 0, z: 0}) {
+    ACTNS_NEON.prototype.addNeonTextFormSix = function (text = "Hello", color = "#eeefff", lightColor = "#eeefff", intensity = 5, fontPath = '', boardColor = "red", position = { x: 0, y: 0, z: 0 }) {
         const defaultFontPath = '../assets/font/Sweet Charlie_Regular.json',
             loader = new FontLoader(),
             that = this;
@@ -619,7 +611,7 @@ var ACTNS_NEON = (function () {
 
             const boxGroup = new THREE.Group();
 
-        
+
             boxGroup.add(
                 middlePanelMesh,
                 backPanelMesh,
@@ -698,31 +690,31 @@ var ACTNS_NEON = (function () {
     /**
      * Initialize the rendering.
      */
-    ACTNS_NEON.prototype.render = function(autopreview = false) {
+    ACTNS_NEON.prototype.render = function (autopreview = false) {
         const renderer = this.renderer;
         const scene = this.scene;
         const camera = this.camera;
         const composer = this.composer;
-    
+
         const animate = () => {
             if (autopreview)
                 requestAnimationFrame(animate);
             renderer.render(scene, camera);
         };
-    
+
         const animateComposer = () => {
             if (autopreview)
                 requestAnimationFrame(animateComposer);
             composer.render();
         };
-    
+
         if (typeof composer !== "undefined" && composer !== null) {
             animateComposer();
         } else {
             animate();
         }
     };
-    
+
 
     ACTNS_NEON.prototype.removeAllObjects = function () {
         currentObj.forEach(object => {
