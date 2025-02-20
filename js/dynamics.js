@@ -44,7 +44,7 @@
         
         
 
-        let color = "yellow", lightColor = "yellow", actualText = "Ahime", actualType = 1, actualIntensity = 1;
+        let color = "yellow", lightColor = "yellow", actualText = "Ahime", actualType = 1, actualIntensity = 2;
         let actns_neon;
 
         $("#actns-2d-preview-selector").on("click", function () {
@@ -79,7 +79,8 @@
             actualType = type;
             actns_neon.removeAllObjects();
 
-            let font = await actnsConvertFontToJSON('http://127.0.0.1:5501/assets/font/Flynn.ttf')
+            let font = await actnsConvertFontToJSON('http://127.0.0.1:5501/assets/font/Neonderthaw-Regular.ttf')
+
 
             switch (parseInt(type)) {
                 case 1:
